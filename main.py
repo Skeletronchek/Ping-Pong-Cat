@@ -42,11 +42,31 @@ class Ball(GameSprite):
         global cd
         global starttime
         if self.rect.x <5 or self.rect.x > win_width - 80:
+            if self.speedx < 1:
+                self.speedx -= 0.3
+                self.speedy -= 0.3
+                isac.speedx += 0.2
+                cat.speedx += 0.2
+            else:
+                self.speedx += 0.3
+                self.speedy += 0.3
+                isac.speedx += 0.2
+                cat.speedx += 0.2
             self.speedx *= -1
         collision = sprite.spritecollide(
             self, Players, False
         )
         if collision and cd == False:
+            if self.speedy < 1:
+                self.speedy -= 0.3
+                self.speedx -= 0.3
+                isac.speedx += 0.2
+                cat.speedx += 0.2
+            else:
+                self.speedy += 0.3
+                self.speedx += 0.3
+                isac.speedx += 0.2
+                cat.speedx += 0.2
             self.speedy *= -1
             starttime = timer()
             cd = True
@@ -80,8 +100,8 @@ display.set_caption("Cat Tennis")
 
 Players = sprite.Group()
 
-isac = Player(img_hero, win_width /2, win_height - 80, 60, 60, 4,0)
-cat = Enemy(img_enemy, win_width /2, 0, 60, 60, 4,0)
+isac = Player(img_hero, win_width /2, win_height - 80, 60, 60, 6,0)
+cat = Enemy(img_enemy, win_width /2, 0, 60, 60, 6,0)
 Ball = Ball(img_ball, win_width /2, win_height /2, 60, 60, 5.4,5.4)
 Players.add(isac)
 Players.add(cat)
@@ -122,7 +142,7 @@ while run:
                 delay = 0
                 starttime = 0
                 curtime = 0
-        if Ball.rect.y > win_height - 100 or Ball.rect.y < -5:
+        if Ball.rect.y > win_height - 70 or Ball.rect.y < -5:
             finish = True
         isac.update()
         cat.update()
@@ -133,4 +153,3 @@ while run:
         display.update()   
            
     time.delay(30)
-
