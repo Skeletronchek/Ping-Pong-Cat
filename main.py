@@ -151,7 +151,7 @@ while run:
             run = False
                 
     window.blit(background,(0,0))
-    textlost = font2.render('CAT WIN!', 1, (0, 255, 0))
+    textlost = font2.render('CAT WIN!', 1, (0, 0, 255))
     textwin = font2.render('ISAC WIN!', 1, (0, 255, 0))
     textname = font2.render('Racist Cat Ping Pong', 1, (255, 255, 255))
     textlol = font2.render('Press 1 to PvE', 1, (255, 255, 255))
